@@ -11,6 +11,6 @@ docker push basov/docker-complex-api:$SHA
 docker push basov/docker-complex-worker:$SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/frontend-deplyment frontend=basov/docker-complex-frontend:$SHA
-kubectl set image deployments/api-deplyment api=basov/docker-complex-api:$SHA
-kubectl set image deployments/worker-deplyment worker=basov/docker-complex-worker:$SHA
+kubectl set image deployments/frontend-deployment frontend=basov/docker-complex-frontend:$SHA
+kubectl set image deployments/api-deployment api=basov/docker-complex-api:$SHA
+kubectl set image deployments/worker-deployment worker=basov/docker-complex-worker:$SHA
