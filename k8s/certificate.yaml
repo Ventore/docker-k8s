@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: swaip.app
+spec:
+  secretName: swaip-app
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: swaip.app
+  dnsNames:
+    - swaip.app
+    - www.swaip.app
+  acme:
+    config:
+      - http01:
+          ingressClass: ngnix
+        domains:
+          - swaip.app
+          - www.swaip.app
