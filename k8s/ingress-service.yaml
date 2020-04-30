@@ -14,7 +14,8 @@ spec:
       - swaip.app
       secretName: swaip-app
   rules:
-    - http:
+    - host: swaip.app
+      http:
         paths:
           - path: /?(.*)
             backend:
