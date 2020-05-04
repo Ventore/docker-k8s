@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta2
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+    - image: basov/docker-complex-frontend
+      context: ./frontend
+      sync: 
+        infer: ["src/**/*"]
+      docker:
+        dockerfile: Dockerfile.dev
+    - image: basov/docker-complex-api
+      context: ./api
+      sync: 
+        infer: ["**/*"]
+      docker:
+        dockerfile: Dockerfile.dev
+deploy:
+  kubectl:
+    manifests:
+      - k8s/frontend-deployment.yaml
+      - k8s/api-deployment.yaml
+      - k8s/worker-deployment.yaml
+      - k8s/frontend-cluster-ip-service.yaml
+      - k8s/api-cluster-ip-service.yaml

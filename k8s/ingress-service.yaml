@@ -35,4 +35,14 @@ spec:
           - path: /api/?(.*)
             backend:
               serviceName: api-cluster-ip-service
+              servicePort: 5000 
+    - http:
+        paths:
+          - path: /?(.*)
+            backend:
+              serviceName: frontend-cluster-ip-service
+              servicePort: 3000
+          - path: /api/?(.*)
+            backend:
+              serviceName: api-cluster-ip-service
               servicePort: 5000
